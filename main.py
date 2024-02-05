@@ -71,6 +71,14 @@ while run:
         if event.type == pygame.QUIT:
             run = False
         if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_9:
+                spn[0] *= 2
+                spn[1] *= 2
+                get_map(lan, lat, spn, type_map)
+            if event.key == pygame.K_3:
+                spn[0] /= 2
+                spn[1] /= 2
+                get_map(lan, lat, spn, type_map)
             if event.key == pygame.K_UP:
                 lan -= 0.005
             if event.key == pygame.K_DOWN:
