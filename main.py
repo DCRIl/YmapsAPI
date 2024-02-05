@@ -6,7 +6,7 @@ import requests
 
 
 def get_map(lan, lat, spn, type_map):
-    map_request = f"http://static-maps.yandex.ru/1.x/?ll={lan},{lat}&spn={spn[0]},{spn[1]}&l={type_map}"
+    map_request = f"http://static-maps.yandex.ru/1.x/?ll={lat},{lan}&spn={spn[0]},{spn[1]}&l={type_map}"
     response = requests.get(map_request)
 
     if not response:
@@ -36,16 +36,16 @@ while run:
             run = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
-                lan -= 1
+                lan -= 0.005
             if event.key == pygame.K_DOWN:
-                lan += 1
+                lan += 0.005
             if event.key == pygame.K_RIGHT:
-                lat -= 1
+                lat += 0.005
             if event.key == pygame.K_LEFT:
-                lat += 1
+                lat -= 0.005
             get_map(lan, lat, spn, type_map)
-    screen.fill("black")
     screen.blit(pygame.image.load(map_file), (0, 0))
+    pygame.display.flip()
 pygame.quit()
 
 os.remove(map_file)
